@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه سکه‌ای</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            font-size: 24px;
+        }
+        .shop-container {
+            margin: 30px;
+        }
+        .product {
+            display: inline-block;
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product h3 {
+            margin: 10px 0;
+        }
+        .product p {
+            color: #333;
+        }
+        .product button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .product button:hover {
+            background-color: #45a049;
+        }
+        .coins {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .buy-status {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        فروشگاه سکه‌ای
+    </div>
+
+    <div class="coins">
+        <p>تعداد سکه‌های شما: <span id="coins-count">500</span> سکه</p>
+    </div>
+
+    <div class="shop-container">
+        <div class="product">
+            <img src="https://via.placeholder.com/200x150" alt="محصول 1">
+            <h3>محصول 1</h3>
+            <p>قیمت: 300 سکه</p>
+            <button onclick="buyProduct(300)">خرید محصول 1</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/200x150" alt="محصول 2">
+            <h3>محصول 2</h3>
+            <p>قیمت: 200 سکه</p>
+            <button onclick="buyProduct(200)">خرید محصول 2</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/200x150" alt="محصول 3">
+            <h3>محصول 3</h3>
+            <p>قیمت: 150 سکه</p>
+            <button onclick="buyProduct(150)">خرید محصول 3</button>
+        </div>
+    </div>
+
+    <div class="buy-status" id="buy-status"></div>
+
+    <script>
+        let coins = 500; // تعداد سکه اولیه
+
+        // به‌روزرسانی نمایش تعداد سکه‌ها
+        function updateCoins() {
+            document.getElementById('coins-count').innerText = coins;
+        }
+
+        // خرید محصول
+        function buyProduct(price) {
+            if (coins >= price) {
+                coins -= price; // کم کردن تعداد سکه‌ها پس از خرید
+                updateCoins();  // به‌روزرسانی نمایش تعداد سکه‌ها
+                document.getElementById('buy-status').innerText = 'خرید با موفقیت انجام شد!';
+                document.getElementById('buy-status').style.color = 'green';
+            } else {
+                document.getElementById('buy-status').innerText = 'سکه کافی نیست!';
+                document.getElementById('buy-status').style.color = 'red';
+            }
+        }
+    </script>
+
+</body>
+</html>
